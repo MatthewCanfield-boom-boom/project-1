@@ -20,8 +20,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     pause(500)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    sprites.destroy(sprite, effects.smiles, 500)
-    sprites.destroy(otherSprite, effects.fire, 500)
+    sprites.destroy(sprite, effects.rings, 500)
+    sprites.destroy(otherSprite, effects.bubbles, 500)
     info.changeScoreBy(1)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -32,24 +32,7 @@ let football_player: Sprite = null
 let projectile: Sprite = null
 let monke: Sprite = null
 game.splash("shoot the football players", "before they tackle you")
-monke = sprites.create(img`
-    ........................
-    .......fffffffffff......
-    ......ff222222222ffff...
-    ....fff222f2222f22222f..
-    ...ff2222222222222222ff.
-    ...f222522222222222522ff
-    ..ff2225522222222255222f
-    ..f22222555222222552222f
-    ..f22222225555555522222f
-    ..f22222222222222222222f
-    ..ff2222222222222222222f
-    ...f22222222fff2222fff2f
-    ...fff2ffff2f.ff222f.fff
-    .....fff..fff..fffff..ff
-    ........................
-    ........................
-    `, SpriteKind.Player)
+monke = sprites.create(assets.image`ghost`, SpriteKind.Player)
 controller.moveSprite(monke, 0, 100)
 monke.setStayInScreen(true)
 monke.setPosition(5, 60)
